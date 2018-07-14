@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- 表单前后台传值 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>不同表单类型数据的获取</title>
+</head>
+<body>
+<h2>以下为不同类型的表单数据，通过submit传值，向后台发送数据</h2>
+<form name = "info" id="info" action="/demo/typetest/?username=threedog&psd=psd" method="post" >
+  <br />{% csrf_token %}<br />
+  <label for="text_input1">
+      文本输入框：
+  </label>
+  <input type = "text" name="text_input1" id="text_input1" value="{{ text1 }}" />
+  <br>
+
+  <label for="text_input2">
+      包含默认值的文本输入框：
+  </label>
+  <input type = "text" name="text_input2" id="text_input2" value={{ text2 }}/>
+  <br>
+
+  <label for="text_input3">
+      文本输入框：
+  </label>
+  <input type = "text" name="text_input3" id="text_input3" placeholder="占位的文本框"/>
+  <br>
+
+  <label for ="password">
+      密码输入框：
+  </label>
+  <input type = "password" name="password" id="password" />
+  <br>
+
+  <label>单选框：</label><br>
+  <input type="radio" name="radiobtn" id="radiobtn1" value="女" checked/><label for="radiobtn1">女</label><br>
+  <input type="radio" name="radiobtn" id="radiobtn2" value="男"/> <label for="radiobtn2">男</label><br>
+  <label>数据值的选择</label><br>
+  <input type="radio" name="radiobtnn" id="radiobtn3" value="1" checked/><label for="radiobtn3">1</label><br>
+  <input type="radio" name="radiobtnn" id="radiobtn4" value="2"/> <label for="radiobtn4">2</label><br>
+  <input type="radio" name="radiobtnn" id="radiobtn5" value="3" checked/><label for="radiobtn5">3</label><br>
+  <input type="radio" name="radiobtnn" id="radiobtn6" value="4"/> <label for="radiobtn6">4</label><br>
+  <input type="radio" name="radiobtnn" id="radiobtn7" value="5" checked/><label for="radiobtn7">5</label><br>
+  <input type="radio" name="radiobtnn" id="radiobtn8" value="6"/> <label for="radiobtn8">6</label><br>
+
+  <br>
+  <label>复选框：</label><br>
+  <input type="checkbox" id="car" name="car" value="car"/><label for= "car">I have a car !</label><br>
+  <input type="checkbox" id="bike" name="car" value="bike"/><label for="bike">I have a bike </label><br>
+  <input type="checkbox" id="bus" name="car" value="bus"/><label for="bus">I have a bus</label><br>
+
+  <input type="button" name="button1" id="button1" value="input1"/>
+  <button type="button" name="button2" id="button2" value="button2">click here</button><br>
+  <br>
+
+  <label for="school">下拉菜单：</label><br>
+  <select name="school" id="school">
+      <option value="山西大学">山西大学</option>
+      <option value="山东大学">山东大学</option>
+      <option value="太原工业学院">太原工业</option>
+      <option value="太原理工">太原理工大学</option>
+  </select><br><br>
+  <label for="message"></label>
+  <textarea name="message" id="message" rows="10" cols="30" placeholder="请输入你想要输入的内容"></textarea><br>
+  <input type="submit" name="submitButton" id="submitButton" value="提交" />
+<br><br>
+<div id="ajax_table"></div>
+</form>
+</body>
+</html>

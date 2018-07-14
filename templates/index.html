@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Briup</title>
+</head>
+<body>
+    欢迎来到解老师的Django课程!<br>
+    {{ string }}
+    <ul>
+        {% for i in alist %}
+            <li>{{ i }}</li>
+        {% endfor %}
+    </ul>
+    <h2>获取到的字典里的信息:</h2>
+    {% for key, value in dirc.items %}
+        {{ key }}: {{ value }}<br>
+    {% endfor %}
+    <h2>打印0到99的数字</h2>
+    {% for item in List %}
+        {{ item }},
+    {% endfor %}
+</body>
+</html>

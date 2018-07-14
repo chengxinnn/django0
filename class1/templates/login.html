@@ -1,0 +1,63 @@
+{%  load static  %}
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="{% static 'css/admin_login.css' %}" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+<title>欢迎登陆</title>
+</head>
+<script>
+    function orderSubmit(){
+        $.post(
+            "/main/",
+            {
+                "username":$("#user").val(),
+                "password":$("#pwd").val()
+            },
+            function(ret){
+                //console.log(ret);
+                $.each(ret,function (key,value) {
+                    console.log(key + " : " + value);
+                    if(key === "msg" && value === "true"){
+                        location.href="/index/"
+                    }else{
+                        $("#msg").empty();
+                        $("#msg").append("<font color=\"red\">用户名或密码错误</font>");
+                    }
+                })
+            }
+
+        )
+    }
+</script>
+<body>
+<div class="admin_login_wrap">
+    <h1>登录进入图书查询系统</h1>
+    <div class="adming_login_border">
+        <div class="admin_input">
+            <form  name = "loginForm" action="" method = "Post">
+                <ul class="admin_items">
+                    <li>
+                        <label for="user">用户名：</label>
+                        <input type="text" name="username" id="user" size="40" class="admin_input_style" />
+                    </li>
+                    <li>
+                        <label for="pwd">密码：</label>
+                        <input type="password" name="password" id="pwd" size="40" class="admin_input_style" />
+                    </li>
+                    <li>
+                        <div id = "msg"></div>
+                    </li>
+                    <li>
+                        <input type="button" tabindex="3" value="提交" class="btn btn-primary" onClick="orderSubmit()" />
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+    <p> &copy; 2017 Powered by ThreeDog </p>
+</div>
+</body>
+</html>
+
